@@ -3,10 +3,7 @@ package com.itschool.project.controllers;
 import com.itschool.project.models.dtos.UserDTO;
 import com.itschool.project.services.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,8 +21,8 @@ public class UserController {
         return ResponseEntity.ok(userService.createUser(userDTO));
     }
 
-    @GetMapping("/api/users")
-    public ResponseEntity<List<UserDTO>> getUsers() {
+    @GetMapping("/api/users/{id}")
+    public ResponseEntity<List<UserDTO>> getUsers(@PathVariable String id) {
         return ResponseEntity.ok(userService.getUsers());
     }
 }
